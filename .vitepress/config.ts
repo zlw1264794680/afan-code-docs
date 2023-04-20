@@ -36,6 +36,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       items: [
         { text: '快速入门', link: '/front-end/vitepress/index' },
         { text: '搭建知识库', link: '/front-end/vitepress/搭建知识库' },
+        { text: '搭建github-pages', link: '/front-end/vitepress/搭建github-pages' },
       ]
     }
   ],
