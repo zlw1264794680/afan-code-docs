@@ -38,12 +38,12 @@ const nav: ThemeConfig['nav'] = [
     ]
   },
   {
-    text: 'git',
+    text: 'Git',
     activeMatch: `^/git/`,
     link: '/git/index',
   },
   {
-    text: 'other',
+    text: 'Other',
     activeMatch: `^/other/`,
     link: '/other/高效学习',
   }
@@ -78,23 +78,33 @@ export const sidebar: ThemeConfig['sidebar'] = {
   ],
   '/git/':[
     {
-      text: '快速入门',
-      link: '/git/index',
-    },
-    {
-      text: 'git配置ssh',
-      link: '/git/git配置ssh',
-    },
-    {
-      text: '.gitignore失效',
-      link: '/git/.gitignore失效',
+      text:'Git',
+      items:[
+        {
+          text: '快速入门',
+          link: '/git/index',
+        },
+        {
+          text: 'git配置ssh',
+          link: '/git/git配置ssh',
+        },
+        {
+          text: '.gitignore失效',
+          link: '/git/.gitignore失效',
+        }
+      ]
     }
   ],
   '/other/':[
     {
-      text: '高效学习',
-      link: '/git/高效学习',
-    },
+      text:'Other',
+      items:[
+        {
+          text: '高效学习',
+          link: '/other/高效学习',
+        },
+      ]
+    }
   ]
 }
 
