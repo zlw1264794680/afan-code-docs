@@ -8,7 +8,7 @@ import { headerPlugin } from './headerMdPlugin'
 const nav: ThemeConfig['nav'] = [
   {
     text: '前端',
-    activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
+    activeMatch: `^/front-end/`,
     items: [
       {
         text: 'VitePress',
@@ -24,8 +24,28 @@ const nav: ThemeConfig['nav'] = [
             link: '/front-end/react/react-native/index',
           }
         ]
+      },
+      {
+        text: 'Node',
+        activeMatch: '^/node/',
+        items:[
+          {
+            text: 'Node',
+            link: '/front-end/node/index',
+          }
+        ]
       }
     ]
+  },
+  {
+    text: 'git',
+    activeMatch: `^/git/`,
+    link: '/git/index',
+  },
+  {
+    text: 'other',
+    activeMatch: `^/other/`,
+    link: '/other/高效学习',
   }
 ]
 
@@ -35,8 +55,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text:'VitePress',
       items: [
         { text: '快速入门', link: '/front-end/vitepress/index' },
-        { text: '搭建知识库', link: '/front-end/vitepress/搭建知识库' },
-        { text: '搭建github-pages', link: '/front-end/vitepress/搭建github-pages' },
+        { text: '搭建知识库', link: '/front-end/vitepress/搭建知识库' }
       ]
     }
   ],
@@ -47,6 +66,35 @@ export const sidebar: ThemeConfig['sidebar'] = {
         { text: '快速入门', link: '/front-end/react/react-native/index' },
       ]
     }
+  ],
+  '/front-end/node/':[
+    {
+      text:'Node',
+      items: [
+        { text: '快速入门', link: '/front-end/node/index' },
+        { text: 'node版本管理工具', link: '/front-end/node/node版本管理工具' },
+      ]
+    }
+  ],
+  '/git/':[
+    {
+      text: '快速入门',
+      link: '/git/index',
+    },
+    {
+      text: 'git配置ssh',
+      link: '/git/git配置ssh',
+    },
+    {
+      text: '.gitignore失效',
+      link: '/git/.gitignore失效',
+    }
+  ],
+  '/other/':[
+    {
+      text: '高效学习',
+      link: '/git/高效学习',
+    },
   ]
 }
 
