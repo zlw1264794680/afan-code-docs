@@ -4,6 +4,7 @@ import { defineConfigWithTheme } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
+import reactNative from './modules/react-native'
 
 const nav: ThemeConfig['nav'] = [
   {
@@ -50,20 +51,13 @@ const nav: ThemeConfig['nav'] = [
 ]
 
 export const sidebar: ThemeConfig['sidebar'] = {
+  ...reactNative,
   '/front-end/vitepress/':[
     {
       text:'VitePress',
       items: [
         { text: '快速入门', link: '/front-end/vitepress/index' },
         { text: '搭建知识库', link: '/front-end/vitepress/搭建知识库' }
-      ]
-    }
-  ],
-  '/front-end/react/react-native/':[
-    {
-      text:'React Native',
-      items: [
-        { text: '快速入门', link: '/front-end/react/react-native/index' },
       ]
     }
   ],
@@ -141,13 +135,11 @@ export default defineConfigWithTheme<ThemeConfig>({
       copyright: `Copyright © 2014-${new Date().getFullYear()} Evan You`
     }
   },
-
   markdown: {
     config(md) {
       md.use(headerPlugin)
     }
   },
-
   vite: {
     define: {
       __VUE_OPTIONS_API__: false
