@@ -16,7 +16,7 @@
 
 想要的效果图如下：
 
-![](./images/1682143731764.jpg)
+![](../images/1682143731764.jpg)
 
 ScrollView 样式上的俩个属性：`style` 和 `contentContainerStyle` 。`style` 是定义组件的样式，而 `contentContainerStyle` 是定义组件内部的样式。
 
@@ -75,7 +75,7 @@ const App = () => {
 
 如上写法，在页面呈现上如下：
 
-![](./images/1682144184161.jpg)
+![](../images/1682144184161.jpg)
 
 本意是，上下固定，中间撑开滚动。可实际上的效果是，底下部分，会被中间部分顶出去的。
 
