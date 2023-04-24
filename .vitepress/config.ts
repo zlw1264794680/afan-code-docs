@@ -4,7 +4,30 @@ import { defineConfigWithTheme } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
-import reactNative from './modules/react-native'
+import { getCurFile, getCurDir } from './utils/files'
+
+// 转换成sidebarItem数据格式
+export function formatSidebarItem(text:string,absPath:string,linkPath:string){
+  const files = getCurFile(absPath)
+  return {
+    text:text,
+    items:files.map(file=> (
+      {
+        text:file,
+        // link:`${linkPath}/${file}`
+        link:path.join(linkPath,file)
+      }
+    ))
+  }
+}
+// 转换成sidebarItem数据格式列表
+export function formatSidebarList(absPath:string,linkPath:string){
+  return getCurDir(absPath).filter(dirName=>dirName !== 'images').reduce((arr:any[],dirName)=> {
+    // arr.push(formatSidebarItem(dirName,`${absPath}/${dirName}`,`${linkPath}/${dirName}`))
+    arr.push(formatSidebarItem(dirName,path.join(absPath,dirName),path.join(linkPath,dirName)))
+    return arr
+  },[])
+}
 
 const nav: ThemeConfig['nav'] = [
   {
@@ -13,8 +36,7 @@ const nav: ThemeConfig['nav'] = [
     items: [
       {
         text: 'VitePress',
-        link: '/front-end/vitepress/index',
-        activeMatch: '^/vitepress/',
+        link: '/front-end/vitepress/快速入门',
       },
       {
         text: 'React',
@@ -22,17 +44,16 @@ const nav: ThemeConfig['nav'] = [
         items:[
           {
             text: 'React Native',
-            link: '/front-end/react/react-native/index',
+            link: '/front-end/react/react-native/快速入门',
           }
         ]
       },
       {
         text: 'Node',
-        activeMatch: '^/node/',
         items:[
           {
             text: 'Node',
-            link: '/front-end/node/index',
+            link: '/front-end/node/快速入门',
           }
         ]
       }
@@ -40,65 +61,38 @@ const nav: ThemeConfig['nav'] = [
   },
   {
     text: 'Git',
-    activeMatch: `^/git/`,
-    link: '/git/index',
+    link: '/git/快速入门',
   },
   {
     text: 'Other',
-    activeMatch: `^/other/`,
     link: '/other/高效学习',
   }
 ]
 
 export const sidebar: ThemeConfig['sidebar'] = {
-  ...reactNative,
   '/front-end/vitepress/':[
     {
       text:'VitePress',
       items: [
-        { text: '快速入门', link: '/front-end/vitepress/index' },
+        { text: '快速入门', link: '/front-end/vitepress/快速入门' },
         { text: '搭建知识库', link: '/front-end/vitepress/搭建知识库' }
       ]
     }
   ],
+  '/front-end/react/react-native/':[
+    formatSidebarItem('React Native',path.resolve(__dirname,'../src/front-end/react/react-native'),'/front-end/react/react-native'),
+    ...formatSidebarList(path.resolve(__dirname,'../src/front-end/react/react-native'),'/front-end/react/react-native')
+  ],
   '/front-end/node/':[
-    {
-      text:'Node',
-      items: [
-        { text: '快速入门', link: '/front-end/node/index' },
-        { text: 'node版本管理工具', link: '/front-end/node/node版本管理工具' },
-      ]
-    }
+    formatSidebarItem('Node',path.resolve(__dirname,'../src/front-end/node'),'/front-end/node'),
+    ...formatSidebarList(path.resolve(__dirname,'../src/front-end/node'),'/front-end/node')
   ],
   '/git/':[
-    {
-      text:'Git',
-      items:[
-        {
-          text: '快速入门',
-          link: '/git/index',
-        },
-        {
-          text: 'git配置ssh',
-          link: '/git/git配置ssh',
-        },
-        {
-          text: '.gitignore失效',
-          link: '/git/.gitignore失效',
-        }
-      ]
-    }
+    formatSidebarItem('Git',path.resolve(__dirname,'../src/git'),'/git'),
+    ...formatSidebarList(path.resolve(__dirname,'../src/git'),'/git'),
   ],
   '/other/':[
-    {
-      text:'Other',
-      items:[
-        {
-          text: '高效学习',
-          link: '/other/高效学习',
-        },
-      ]
-    }
+    formatSidebarItem('Other',path.resolve(__dirname,'../src/other'),'/other'),
   ]
 }
 
