@@ -1,10 +1,12 @@
 import fs from 'fs'
 import path from 'path'
+import { SearchPlugin } from "vitepress-plugin-search";
 import { defineConfigWithTheme } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
 import { getCurFile, getCurDir } from './utils/files'
+import flexSearchIndexOptions from "flexsearch";
 
 // 转换成sidebarItem数据格式
 export function formatSidebarItem(text:string,absPath:string,linkPath:string){
@@ -116,11 +118,6 @@ export default defineConfigWithTheme<ThemeConfig>({
   themeConfig: {
     nav,
     sidebar,
-    editLink: {
-      repo: 'vuejs/docs',
-      text: 'Edit this page on GitHub'
-    },
-
     footer: {
       license: {
         text: 'MIT License',
@@ -135,6 +132,16 @@ export default defineConfigWithTheme<ThemeConfig>({
     }
   },
   vite: {
+    plugins: [
+      SearchPlugin({
+        ...flexSearchIndexOptions,
+        previewLength: 62,
+        buttonLabel: "搜索",
+        placeholder: "搜索文档",
+        allow: [],
+        ignore: [],
+      })
+    ],
     define: {
       __VUE_OPTIONS_API__: false
     },

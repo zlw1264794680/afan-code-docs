@@ -19,7 +19,9 @@
   "devDependencies": {
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^16.10.3",
-    "terser": "^5.14.2"
+    "flexsearch": "^0.7.31",
+    "terser": "^5.14.2",
+    "vitepress-plugin-search": "1.0.4-alpha.20"
   },
   "pnpm": {
     "peerDependencyRules": {

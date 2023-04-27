@@ -7,9 +7,12 @@
 
 .VPNav,
 #VPSidebarNav,
-#VPContent{
+#VPContent,
+#docsearch,
+.VPPluginSearch-modal-back{
   --vt-c-brand: #0984e3;
   --vt-c-brand-highlight:#74b9ff;
   --vt-c-green: #0984e3;
   --vt-c-green-light: #74b9ff;
+  --vt-c-brand-light:#74b9ff;
 }
