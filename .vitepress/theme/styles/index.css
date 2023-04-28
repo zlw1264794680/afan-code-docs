@@ -16,3 +16,6 @@
   --vt-c-green-light: #74b9ff;
   --vt-c-brand-light:#74b9ff;
 }
+.VPPluginSearch-search-item:hover{
+  color: var(--vt-c-brand)!important;
+}
