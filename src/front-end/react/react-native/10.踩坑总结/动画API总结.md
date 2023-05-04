@@ -102,3 +102,7 @@ const App = ()=>{
 ### 为什么动画不执行？？？
 
 初始化的那一次，动画是不会被执行的！！！请检查一下，是不是给动画组件如`Animated.View`赋值的时候，一直处于初始化赋值状态（即第一次赋值状态）
+
+### 推荐学习网站
+
+[React Native Animation Book](https://www.codedaily.io/courses/React-Native-Animated-for-Beginners/Introduction)
