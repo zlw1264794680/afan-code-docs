@@ -49,7 +49,7 @@ const ActionSheetIos = forwardRef((props, ref) => {
   const {
     title,
     message,
-    tintColor = '#007AFF',
+    tintColor = '#FF3B30',
     onPress = () => {},
     cancelButtonIndex,
     destructiveButtonIndex,
@@ -74,16 +74,13 @@ const ActionSheetIos = forwardRef((props, ref) => {
     );
   };
 
-  return (
-    <View>
-      <Text />
-    </View>
-  );
+  return null;
 });
 ActionSheetIos.propTypes = propTypes;
 const styles = StyleSheet.create({});
 
 export default ActionSheetIos;
+
 ```
 
 
@@ -106,29 +103,18 @@ import {
 } from 'react-native';
 import propTypes from './props';
 
-const WARN_COLOR = '#FF3B30';
+const COLOR = '#007AFF';
 const MAX_HEIGHT = Dimensions.get('window').height * 0.7;
 
 const isset = prop => {
   return typeof prop !== 'undefined';
 };
 
-const merge = (target, source) => {
-  Object.keys(source).forEach(key => {
-    if (Object.prototype.toString.call(source).slice(8, -1) === 'Object') {
-      target[key] = merge(target[key] || {}, source[key]);
-    } else {
-      target[key] = source[key];
-    }
-  });
-  return target;
-};
-
 const ActionSheetCustom = forwardRef((props, ref) => {
   const {
     title,
     message,
-    tintColor = '#007AFF',
+    tintColor = '#FF3B30',
     onPress = () => {},
     cancelButtonIndex,
     destructiveButtonIndex,
@@ -260,7 +246,7 @@ const ActionSheetCustom = forwardRef((props, ref) => {
   };
 
   const _createButton = (title, index) => {
-    const fontColor = destructiveButtonIndex === index ? WARN_COLOR : tintColor;
+    const fontColor = destructiveButtonIndex === index ? tintColor : COLOR;
     const buttonBoxStyle = cancelButtonIndex === index ? styles.cancelButtonBox : styles.buttonBox;
     return (
       <TouchableOpacity key={index} style={buttonBoxStyle} onPress={() => hide(index)}>
@@ -348,6 +334,7 @@ const styles = StyleSheet.create({
   buttonBox: {
     height: 50,
     borderTopWidth: StyleSheet.hairlineWidth,
+    borderColor: '#E9E9E9',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
@@ -366,7 +353,6 @@ const styles = StyleSheet.create({
 });
 
 export default ActionSheetCustom;
-
 ```
 
 
