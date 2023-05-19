@@ -4,7 +4,7 @@
 
 ## git config --global xxx
 
-打开 `git bash`，分别执行以下两句命令：用户名和邮箱，尽量与仓库的保持一致。（用户名是可以随便起的，邮箱就尽量保持一致）
+打开 `git bash`，分别执行以下两句命令：设置用户名和邮箱。（用户名随便起，邮箱与仓库保持一致）
 
 通过 `git config --list`查看配置信息。
 
@@ -17,7 +17,7 @@ git config --global user.email “邮箱”
 
 ```shell
 # 执行命令后，一直按回车到生成
-ssh-keygen -t rsa
+ssh-keygen -t rsa  -C “邮箱”
 ```
 
 ## 执行查看公钥的命令
